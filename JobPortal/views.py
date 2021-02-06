@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import *
+from .models import Company, Candidates
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login,logout,authenticate
-from .forms import *
+from .forms import ApplyForm
 
 def home(request):
     if request.user.is_authenticated:
         candidates = Candidates.objects.filter(company__name=request.user.username)
         context={'candidates':candidates,}
-        return render(request,hr.html,context)
-        else:
-            companies=Company.objects.all()
-            context={'candidates':candidates,}
-            return render(request,'Jobseeker.html',context)
+        return render(request,'hr.html',context)
+    else:
+        companies= Company.objects.all()
+        context={'companies':companies,}
+        return render(request,'Jobseeker.html',context)
 
 
 def logoutUser(request):
@@ -57,7 +57,7 @@ def applyPage(request):
             form.save()
             return redirect('home')
     context={'form':form}
-    return render(request,'apply.html',context))
+    return render(request,'apply.html',context)
 
 
 

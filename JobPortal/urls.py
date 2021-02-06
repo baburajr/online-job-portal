@@ -1,11 +1,11 @@
-from dango.urls import path
-from .views import *
+from django.urls import path
+from .views import home, loginUser, logoutUser, registerUser, applyPage
 
 
 urlpatterns=[
     path('',home,name='home'),
-    path('login.html/',loginUser,name='login'),
-    path('logout.html/',logoutUser,name='logout'),
-    path('register.html/',registerUser,name='register'),
-    path('apply.html/',applyPage,name='apply'),
+    path('login/',loginUser,name='login'),
+    path('logout/',logoutUser,name='logout'),
+    path('register/',registerUser,name='register'),
+    path('apply/',applyPage,name='apply'),
 ]

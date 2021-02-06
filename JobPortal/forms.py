@@ -1,5 +1,5 @@
-from dango.forms import ModelForm
-from .models import *
+from django.forms import ModelForm
+from .models import Candidates
 
 class ApplyForm(ModelForm):
     class Meta:
